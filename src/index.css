@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-charcoal-950: #0a0a0a;
+  --color-charcoal-900: #111111;
+  --color-charcoal-800: #1a1a1a;
+  --color-charcoal-700: #222222;
+  --color-charcoal-600: #2a2a2a;
+  --color-charcoal-500: #3a3a3a;
+
+  --color-warm-50: #ffffff;
+  --color-warm-100: #fbf9f4;
+  --color-warm-200: #f5f2ea;
+  --color-warm-300: #e8e4d8;
+  --color-warm-400: #d1cdc1;
+  --color-warm-500: #a6a6a0;
+  --color-warm-600: #787872;
+  --color-warm-700: #55554f;
+
+  --purple-500: #9B6BD6;
+  --purple-700: #6B3FA0;
+  --purple-900: #3F2466;
+
+  --color-purple-500: #9B6BD6;
+  --color-purple-700: #6B3FA0;
+  --color-purple-900: #3F2466;
+
+  --color-amber-gold: #9B6BD6;
+  --color-amber-gold-hover: #6B3FA0;
+  --color-amber-gold-dark: #3F2466;
+
+  --color-sage-muted: #9B6BD6;
+  --color-sage-light: #9B6BD6;
+  --color-sage-dark: #3F2466;
+
+  --color-lavender-accent: #9B6BD6;
+  --color-lavender-light: #c4b1df;
+  --color-lavender-dark: #3F2466;
+  --color-lavender-border: #6B3FA0;
+}
+
+:root {
+  --purple-500: #9B6BD6;
+  --purple-700: #6B3FA0;
+  --purple-900: #3F2466;
+  --font-heading: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif, .font-heading {
+  font-family: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: #111111;
+  color: #f5f2ea;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #111111;
+  color: #f5f2ea;
+}
+
+::selection {
+  background-color: #9B6BD6;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Scroll-Driven Entrance Animations (Scroll-Triggered Reveal)
+   ========================================================================== */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-duration: 0.75s;
+}
+
+/* Initial state: Hidden, shifted down 30px, scaled down slightly to 0.98 */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition:
+    opacity var(--reveal-duration) var(--ease-out-expo),
+    transform var(--reveal-duration) var(--ease-out-expo);
+  will-change: transform, opacity;
+}
+
+/* Animated state: Smoothly transitions to natural position and opacity */
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered Delay Utilities */
+.reveal-delay-100, [data-delay="100"] { transition-delay: 100ms; }
+.reveal-delay-150, [data-delay="150"] { transition-delay: 150ms; }
+.reveal-delay-200, [data-delay="200"] { transition-delay: 200ms; }
+.reveal-delay-250, [data-delay="250"] { transition-delay: 250ms; }
+.reveal-delay-300, [data-delay="300"] { transition-delay: 300ms; }
+.reveal-delay-400, [data-delay="400"] { transition-delay: 400ms; }
+.reveal-delay-500, [data-delay="500"] { transition-delay: 500ms; }
+
+/* Accessibility Fallback for Users with Motion Sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+}
